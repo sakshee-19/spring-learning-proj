@@ -43,4 +43,9 @@ public class ChatController {
         model.addAttribute("chatMessages", this.chatMessageService.getChatMessages());
         return "chat";
     }
+
+    @ModelAttribute("allMessageTypes")
+    public String[] getAllMessageTypes() {
+        return new String[] {"Say", "SHOUT", "whisper"};
+    }
 }

@@ -13,9 +13,7 @@
     <input id="messageText" type="text" th:field="*{messageText}">
     <label for="messageType">Message Type: </label>
     <select id="messageType" th:field="*{messageType}">
-        <option selected th:value="'Say'">Say</option>
-        <option th:value="'SHOUT'">Shout</option>
-        <option th:value="'whisper'">Whisper</option>
+        <option th:each="opt : ${allMessageTypes}" th:value="${opt}" th:text="${opt}">Say</option>
     </select>
     <input type="submit">
 </form>
