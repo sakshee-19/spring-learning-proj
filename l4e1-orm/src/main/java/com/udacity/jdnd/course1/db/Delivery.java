@@ -2,6 +2,9 @@ package com.udacity.jdnd.course1.db;
 
 import java.sql.Timestamp;
 
+/**
+ *
+ */
 public class Delivery {
     private Integer id;
     private Integer orderId;
