@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -19,7 +18,7 @@ public class MessageService {
 
     private String message;
 
-    private Logger logger = LoggerFactory.getLogger(MessageService.class);
+    private final Logger logger = LoggerFactory.getLogger(MessageService.class);
 
 //    private List<ChatMessage> chatMessages;
 
