@@ -35,4 +35,18 @@ class Course1ApplicationTests {
 		assertThrows(IllegalArgumentException.class, () -> fbs.fizzBuzz(0));
 		assertThrows(IllegalArgumentException.class, () -> fbs.fizzBuzz(-1));
 	}
+
+	@Test
+	public void BuzzFizzTest() {
+
+		FizzBuzzService bft = new FizzBuzzService();
+
+		assertEquals(15, bft.buzzFizz("Fizz", 5));
+		assertEquals(15, bft.buzzFizz("Buzz", 3));
+		assertEquals(15, bft.buzzFizz("FizzBuzz", 1));
+		assertEquals(15, bft.buzzFizz("15", 15));
+
+		assertThrows(IllegalArgumentException.class, bft.buzzFizz("saf"))
+
+	}
 }
