@@ -23,17 +23,16 @@ public class ChatController {
     MessageService chatMessageService;
 
     @GetMapping("/chat")
-    public String getChats(Model model) {
+    public String getChats(Authentication auth,Model model) {
         logger.info("**START** getChats");
-        String user = SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.info("getChats {}", chatMessageService.getChatMessagesByUser(user));
-        model.addAttribute("chatMessages", this.chatMessageService.getChatMessagesByUser(user));
+        logger.info("getChats {}", chatMessageService.getChatMessagesByUser(auth.getName()));
+        model.addAttribute("chatMessages", chatMessageService.getChatMessagesByUser(auth.getName()));
         logger.info("**END** getChats");
         return "chat";
     }
 
     @PostMapping("/chat")
-    public String postChats(@ModelAttribute("userProfile") ChatFormPojo userProfile, Model model) {
+    public String postChats(Authentication auth, @ModelAttribute("userProfile") ChatFormPojo userProfile, Model model) {
         logger.info("*** START postChats userProfile = {}", userProfile);
         ChatMessage cm = new ChatMessage();
         switch (userProfile.getMessageType()){
@@ -48,8 +47,8 @@ public class ChatController {
                 break;
         }
 //        cm.setUsername(userProfile.getUsername());
-        logger.info("auth {}", SecurityContextHolder.getContext().getAuthentication().getName());
-        cm.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        logger.info("auth {}", auth.getName());
+        cm.setUsername(auth.getName());
         logger.info("{}", userProfile);
         this.chatMessageService.addMessages(cm);
         model.addAttribute("chatMessages", this.chatMessageService.getChatMessages());
