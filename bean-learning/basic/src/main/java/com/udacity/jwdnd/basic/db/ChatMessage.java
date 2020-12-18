@@ -1,11 +1,17 @@
-package com.udacity.jwdnd.basic.chats;
+package com.udacity.jwdnd.basic.db;
 
-
-public class ChatFormPojo {
+public class ChatMessage {
 
     private String username;
     private String messageText;
-    private String messageType;
+    private Integer messageId;
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
+    }
 
     public String getUsername() {
         return username;
@@ -23,20 +29,12 @@ public class ChatFormPojo {
         this.messageText = messageText;
     }
 
-    public String getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
-    }
-
     @Override
     public String toString() {
-        return "ChatFormPojo{" +
+        return "ChatMessage{" +
                 "username='" + username + '\'' +
                 ", messageText='" + messageText + '\'' +
-                ", messageType='" + messageType + '\'' +
+                ", messageId=" + messageId +
                 '}';
     }
 }

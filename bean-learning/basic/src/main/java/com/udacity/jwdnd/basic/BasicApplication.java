@@ -1,9 +1,9 @@
 package com.udacity.jwdnd.basic;
 
+import com.udacity.jwdnd.basic.services.MessageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 
 @SpringBootApplication
 public class BasicApplication {
