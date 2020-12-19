@@ -1,5 +1,6 @@
 package com.udacity.jwdnd.basic.services;
 
+import com.udacity.jwdnd.basic.chats.ChatFormPojo;
 import com.udacity.jwdnd.basic.db.ChatMessage;
 import com.udacity.jwdnd.basic.mappers.ChatMessagesMapper;
 import org.slf4j.Logger;
@@ -34,9 +35,22 @@ public class MessageService {
         return this.message.toLowerCase();
     }
 
-    public void addMessages(ChatMessage chatMessage) {
-        logger.info("**START** addMessages chatMessage={}", chatMessage);
+    public void addMessages(ChatFormPojo chatForm) {
+        logger.info("**START** addMessages chatMessage={}", chatForm);
 //        if(this.chatMessages == null) this.chatMessages = new ArrayList<>();
+        ChatMessage chatMessage = new ChatMessage();
+        switch (chatForm.getMessageType()){
+            case "Say":
+                chatMessage.setMessageText(chatForm.getMessageText());
+                break;
+            case "whisper":
+                chatMessage.setMessageText(chatForm.getMessageText().toLowerCase());
+                break;
+            case "SHOUT":
+                chatMessage.setMessageText(chatForm.getMessageText().toUpperCase());
+                break;
+        }
+        chatMessage.setUsername(chatForm.getUsername());
         messagesMapper.addNewChatMessage(chatMessage);
 //        this.chatMessages.add(chatMessage);
         logger.info("**END** addMessages ");

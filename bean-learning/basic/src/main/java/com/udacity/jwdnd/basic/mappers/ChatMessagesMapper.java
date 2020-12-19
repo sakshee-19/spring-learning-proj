@@ -14,10 +14,10 @@ public interface ChatMessagesMapper {
     @Select("SELECT * FROM MESSAGES")
     List<ChatMessage> findAllMessages();
 
-    @Insert("INSERT into MESSAGES (message_text, username) values (#{messageText}, #{username} )")
+    @Insert("INSERT into MESSAGES (messagetext, username) values (#{messageText}, #{username} )")
     @Options(useGeneratedKeys = true, keyProperty = "messageId")
     int addNewChatMessage(ChatMessage message);
 
-    @Delete("DELETE FROM MESSAGES WHERE message_id=#{id}")
+    @Delete("DELETE FROM MESSAGES WHERE messageid=#{id}")
     void deleteMessage(String id);
 }
