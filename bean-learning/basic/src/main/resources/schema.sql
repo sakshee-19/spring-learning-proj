@@ -7,7 +7,7 @@ firstname VARCHAR(20),
 lastname VARCHAR(20)
 );
 CREATE TABLE IF NOT EXISTS MESSAGES (
-message_id INT PRIMARY KEY auto_increment,
+messageid INT PRIMARY KEY auto_increment,
 username VARCHAR NOT NULL,
-message_text VARCHAR NOT NULL
+messagetext VARCHAR NOT NULL
 );
