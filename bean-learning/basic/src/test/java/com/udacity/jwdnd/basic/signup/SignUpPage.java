@@ -83,4 +83,13 @@ public class SignUpPage {
     public void setErrorMsg(String errorMsg) {
         this.errorMsg.sendKeys(errorMsg);
     }
+
+    public void signUp(String username, String password, String firstname, String lastname) {
+        this.setInputUsername(username);
+        this.setInputPassword(password);
+        this.setInputLastName(lastname);
+        this.setInputFirstName(firstname);
+
+        this.clickSubmitButton();
+    }
 }

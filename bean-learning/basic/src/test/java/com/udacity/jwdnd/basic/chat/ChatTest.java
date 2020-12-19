@@ -1,5 +1,7 @@
 package com.udacity.jwdnd.basic.chat;
 
+import com.udacity.jwdnd.basic.login.LoginPage;
+import com.udacity.jwdnd.basic.signup.SignUpPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -27,17 +29,33 @@ public class ChatTest {
 
     @BeforeEach
     public void setUp(){
-        driver.get("http://localhost:" + port + "/counter");
+        driver.get("http://localhost:" + port );
         chatPage = new ChatPage(driver);
     }
 
     @AfterAll
-    public void afterAll(){
+    public static void afterAll(){
         driver.quit();
     }
 
     @Test
     public void testSubmitFunction() {
 //        int chatMessages =
+        driver.get("http://localhost:" + port+"/signup");
+        SignUpPage signUpPage = new SignUpPage(driver);
+
+        signUpPage.signUp("saku", "saku", "sakshee", "jain");
+
+        driver.get("http://localhost:" + port+"/login");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("saku", "saku");
+
+
+        driver.get("http://localhost:" + port+"/chat");
+        chatPage.sendChatMessage("Hello", "SHOUT");
+
+        System.out.println(chatPage.getChatMessage().getMessageText());
+        System.out.println(chatPage.getChatMessage().getUsername());
+
     }
 }

@@ -50,4 +50,9 @@ public class LoginPage {
         return this.link.getText();
     }
 
+    public void login(String username, String password) {
+        this.setInputPassword(password);
+        this.setInputUsername(username);
+        this.clickSubmitButton();
+    }
 }

@@ -18,8 +18,8 @@
     <input type="submit">
 </form>
 <!--<p th:unless="${#lists.size(chatMessages) = 0}" th:each="chats : ${chatMessages}" th:text="${chats.username}">:::::</p>-->
-<div th:each="chatMessage : ${chatMessages}">
-    <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.messageText}">Hello, world!</span>
+<div th:each="chatMessage : ${chatMessages}" >
+    <span class="chatMessageUsername" th:text="${chatMessage.username}">Username</span>: <span class="chatMessages" th:text="${chatMessage.messageText}">Hello, world!</span>
 </div>
 
 <p>Thanks</p>

@@ -1,5 +1,6 @@
 package com.udacity.jwdnd.basic.chat;
 
+import com.udacity.jwdnd.basic.db.ChatMessage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,12 @@ public class ChatPage {
 
     @FindBy(tagName = "form")
     private WebElement userProfileForm;
+
+    @FindBy(className = "chatMessages")
+    private WebElement chatMessages;
+
+    @FindBy(className = "chatMessageUsername")
+    private WebElement chatMessageUsername;
 
     public ChatPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -37,5 +44,18 @@ public class ChatPage {
 
     public String getMessageType(){
         return messageType.getText();
+    }
+
+    public void sendChatMessage(String msg, String type) {
+        this.setMessageText(msg);
+        this.setMessageType(type);
+        this.submitForm();
+    }
+
+    public ChatMessage getChatMessage() {
+        ChatMessage cm = new ChatMessage();
+        cm.setMessageText(chatMessages.getText());
+        cm.setUsername(chatMessageUsername.getText());
+        return cm;
     }
 }
