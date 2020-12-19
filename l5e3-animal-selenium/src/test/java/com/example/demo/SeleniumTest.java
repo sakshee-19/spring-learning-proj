@@ -20,8 +20,8 @@ public class SeleniumTest {
         adjective.sendKeys("green");
 
         for (int i=0; i<4; ++i){
-            WebElement submit = driver.findElement(By.id("submit"));
-            submit.click();
+            WebElement submit = driver.findElement(By.tagName("form"));
+            submit.submit();
             Thread.sleep(100);
         }
 
