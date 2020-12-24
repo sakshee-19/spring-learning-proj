@@ -17,7 +17,7 @@ public class DogController {
     DogService dogService;
 
     @GetMapping("/{id}")
-    public ResponseEntity getDogById(@PathVariable("id") int id){
+    public ResponseEntity getDogById(@PathVariable("id") Integer id){
         Dog result = dogService.getDogById(id);
         return new ResponseEntity(result, HttpStatus.OK);
     }

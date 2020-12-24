@@ -18,7 +18,7 @@ public class DogService {
         return (List<Dog>) dogRepository.findAll();
     }
 
-    public Dog getDogById(int id){
+    public Dog getDogById(Integer id){
         Optional<Dog> dogRes = dogRepository.findById(id);
         if (dogRes.isPresent()){
             return dogRes.get();

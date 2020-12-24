@@ -1,24 +1,24 @@
 package com.udacity.bootstrap.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Dog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
+    @Column
     private String name;
+    @Column
     private String breed;
+    @Column
     private String origin;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,7 +46,7 @@ public class Dog {
         this.origin = origin;
     }
 
-    public Dog(Long id, String name, String breed, String origin) {
+    public Dog(Integer id, String name, String breed, String origin) {
         this.id = id;
         this.name = name;
         this.breed = breed;
