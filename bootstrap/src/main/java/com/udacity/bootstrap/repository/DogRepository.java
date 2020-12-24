@@ -16,4 +16,10 @@ public interface DogRepository extends CrudRepository<Dog, Integer> {
 
     @Query(value = "SELECT * FROM Dog where name=:name", nativeQuery = true)
     public List<Dog> getDogByName(String name);
+
+    @Query("select d.id, d.breed from Dog d")
+    List<String> findAllBreed();
+
+    @Query("select d.id, d.name from Dog d")
+    List<String> findAllName();
 }

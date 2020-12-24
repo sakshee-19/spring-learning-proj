@@ -22,6 +22,16 @@ public class DogController {
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
+    @GetMapping("/breeds")
+    public ResponseEntity findAllBreeds(){
+        return new ResponseEntity(dogService.findAllBreeds(), HttpStatus.OK);
+    }
+
+    @GetMapping("/names")
+    public ResponseEntity findAllNames(){
+        return new ResponseEntity(dogService.findAllName(), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity findAllDog(@RequestParam(required = false, name = "name") String name){
         List<Dog> result;

@@ -18,6 +18,14 @@ public class DogService {
         return (List<Dog>) dogRepository.findAll();
     }
 
+    public List<String> findAllBreeds(){
+        return dogRepository.findAllBreed();
+    }
+
+    public List<String> findAllName() {
+        return dogRepository.findAllName();
+    }
+
     public Dog getDogById(Integer id){
         Optional<Dog> dogRes = dogRepository.findById(id);
         if (dogRes.isPresent()){
