@@ -1,5 +1,6 @@
-INSERT INTO dog (id, breed, name, origin) VALUES (1,'breed1', 'ATL','Atlanta');
-INSERT INTO dog (id,breed, name, origin) VALUES (2,'breed2', 'MIA','Miami');
-INSERT INTO dog (id,breed, name, origin) VALUES (3,'breed3', 'LAX','Los Angeles');
-INSERT INTO dog (id,breed, name, origin) VALUES (4,'breed4', 'PHX','Phoenix');
-INSERT INTO dog (id,breed, name, origin) VALUES (5,'breed5', 'ORD','Chicago');
+
+INSERT INTO dog (id, name, breed, origin) VALUES (1, 'Fluffy', 'Pomeranian', 'Mountain View, CA');
+INSERT INTO dog (id, name, breed, origin) VALUES (2, 'Spot', 'Pit Bull', 'Austin, TX');
+INSERT INTO dog (id, name, breed, origin) VALUES (3, 'Ginger', 'Cocker Spaniel', 'Kansas City, KS');
+INSERT INTO dog (id, name, breed, origin) VALUES (4, 'Lady', 'Direwolf', 'The North');
+INSERT INTO dog (id, name, breed, origin) VALUES (5, 'Sasha', 'Husky', 'Buffalo, NY');

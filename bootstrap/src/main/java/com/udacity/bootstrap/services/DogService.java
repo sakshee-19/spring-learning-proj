@@ -26,12 +26,20 @@ public class DogService {
         return dogRepository.findAllName();
     }
 
-    public Dog getDogById(Integer id){
+    public Dog getDogById(Long id){
         Optional<Dog> dogRes = dogRepository.findById(id);
-        if (dogRes.isPresent()){
-            return dogRes.get();
-        }
-        return null;
+//        if (dogRes.isPresent()){
+//            return dogRes.get();
+//        }
+        return dogRes.orElseThrow(DogNotFoundException::new);
+
+    }
+
+    public String getBreedById(Long id) {
+        Optional<String> optionalBreed = Optional.ofNullable(dogRepository.findBreedById(id));
+        String breed = optionalBreed.orElseThrow(DogNotFoundException::new);
+        return breed;
+
     }
 
     public List<Dog> getDogByName(String name) {
