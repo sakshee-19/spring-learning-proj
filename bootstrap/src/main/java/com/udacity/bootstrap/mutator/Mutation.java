@@ -19,23 +19,23 @@ public class Mutation implements GraphQLMutationResolver {
 //        dogRepository.deleteByBreed(breed);
 //        return true;
 //    }
-public boolean deleteDogBreed(String breed) {
-    boolean deleted = false;
-    Iterable<Dog> allDogs = dogRepository.findAll();
-    // Loop through all dogs to check their breed
-    for (Dog d:allDogs) {
-        if (d.getBreed().equals(breed)) {
-            // Delete if the breed is found
-            dogRepository.delete(d);
-            deleted = true;
+    public boolean deleteDogBreed(String breed) {
+        boolean deleted = false;
+        Iterable<Dog> allDogs = dogRepository.findAll();
+        // Loop through all dogs to check their breed
+        for (Dog d:allDogs) {
+            if (d.getBreed().equals(breed)) {
+                // Delete if the breed is found
+                dogRepository.delete(d);
+                deleted = true;
+            }
         }
+        // Throw an exception if the breed doesn't exist
+        if (!deleted) {
+            throw new BreedNotFoundException("Breed Not Found", breed);
+        }
+        return deleted;
     }
-    // Throw an exception if the breed doesn't exist
-    if (!deleted) {
-        throw new BreedNotFoundException("Breed Not Found", breed);
-    }
-    return deleted;
-}
 
 
     public Dog updateDogName(String newName, Long id) {

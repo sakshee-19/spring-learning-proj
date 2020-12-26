@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Dog Not Found")
+//@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Dog Not Found")
 public class DogNotFoundException extends RuntimeException implements GraphQLError {
 
     public DogNotFoundException(){}
@@ -18,7 +18,7 @@ public class DogNotFoundException extends RuntimeException implements GraphQLErr
     public DogNotFoundException(String message){ super(message);}
 
     private Map<String, Object> extensions = new HashMap<>();
-    
+
     public DogNotFoundException(String message, Long id){ super(message); extensions.put("invalidDogId", id);}
 
     @Override
