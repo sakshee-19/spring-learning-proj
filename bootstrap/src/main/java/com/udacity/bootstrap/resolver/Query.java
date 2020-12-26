@@ -24,7 +24,7 @@ public class Query implements GraphQLQueryResolver {
         if(dog.isPresent())
             return dog.get();
         else
-            throw new DogNotFoundException("DogBreed with id "+id+" Not Found");
+            throw new DogNotFoundException("Dog Not found", id);
     }
 
 }
