@@ -10,7 +10,6 @@ package com.udacity.bootstrap.services;
         import java.util.List;
         import java.util.Map;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Breed Not Found")
 public class BreedNotFoundException extends RuntimeException implements GraphQLError {
 
     public BreedNotFoundException(){}
