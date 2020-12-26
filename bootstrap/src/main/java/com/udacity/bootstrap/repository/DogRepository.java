@@ -21,6 +21,9 @@ public interface DogRepository extends CrudRepository<Dog, Long> {
     @Query("SELECT d.id, d.breed FROM Dog d where d.id=:id")
     String findBreedById(Long id);
 
+    @Query("DELETE FROM Dog d where d.breed=:breed")
+    void deleteByBreed(String breed);
+
 
     @Query("select d.id, d.breed from Dog d")
     List<String> findAllBreed();
