@@ -1,4 +1,4 @@
-package com.udacity.bootstrap;
+package com.udacity.dogBreed;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class BootstrapApplication {
+public class DogBreedApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BootstrapApplication.class, args);
+		SpringApplication.run(DogBreedApplication.class, args);
 	}
 
 }
