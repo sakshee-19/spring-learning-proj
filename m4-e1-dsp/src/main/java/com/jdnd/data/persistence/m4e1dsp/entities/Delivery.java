@@ -26,7 +26,7 @@ public class Delivery {
     @Type(type = "yes_no")
     private boolean delivered;
 
-    @OneToMany(mappedBy = "delivery", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "delivery", cascade = CascadeType.REMOVE)
     private List<Plant> plants;
 
     public List<Plant> getPlants() {

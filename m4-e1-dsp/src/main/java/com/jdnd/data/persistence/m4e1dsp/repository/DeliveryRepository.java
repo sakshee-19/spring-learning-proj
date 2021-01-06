@@ -2,11 +2,13 @@ package com.jdnd.data.persistence.m4e1dsp.repository;
 
 import com.jdnd.data.persistence.m4e1dsp.entities.Delivery;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+@Repository
 @Transactional
 public class DeliveryRepository {
 
@@ -23,9 +25,8 @@ public class DeliveryRepository {
     }
 
     public Delivery merge(Delivery delivery){
-        Delivery managedEntity = entityManager.merge(delivery);
-        BeanUtils.copyProperties(delivery, managedEntity);
-        return managedEntity;
+        return entityManager.merge(delivery);
+
     }
 
     public void delete(Long id){
