@@ -22,7 +22,7 @@ public class Plant {
     @Column(name = "price", scale = 4, precision = 12)
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
