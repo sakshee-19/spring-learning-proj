@@ -4,9 +4,7 @@ import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -26,7 +24,7 @@ public class Delivery {
     @Type(type = "yes_no")
     private boolean delivered;
 
-    @OneToMany(mappedBy = "delivery", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "delivery", cascade = CascadeType.ALL)
     private List<Plant> plants;
 
     public List<Plant> getPlants() {
