@@ -26,7 +26,7 @@ public class PlantController {
     }
 
     @GetMapping("/{nam}")
-    @JsonView(Views.class)
+    @JsonView(Views.Public.class)
     public Plant getPlantJSON(@PathVariable String nam) {
         Plant plant = plantService.getPlantByName(nam);
         return plant;

@@ -14,11 +14,11 @@ public class Plant {
     @GeneratedValue
     private Long id;
 
-    @JsonView(Views.class)
+    @JsonView(Views.Public.class)
     @Nationalized
     private String name;
 
-    @JsonView(Views.class)
+    @JsonView(Views.Public.class)
     @Column(name = "price", scale = 4, precision = 12)
     private BigDecimal price;
 
