@@ -1,5 +1,6 @@
 package com.jdnd.data.persistence.m4e1dsp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.jdnd.data.persistence.m4e1dsp.controller.Views;
 import org.hibernate.annotations.Nationalized;
@@ -22,6 +23,7 @@ public class Plant {
     @Column(name = "price", scale = 4, precision = 12)
     private BigDecimal price;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;

@@ -3,22 +3,22 @@ package com.jdnd.data.persistence.m4e1dsp.dto;
 import java.math.BigDecimal;
 
 public class RecipientAndPrice {
-    private String name;
+    private String recipientName;
     private BigDecimal price;
 
     public RecipientAndPrice(String name, BigDecimal price) {
-        this.name = name;
+        this.recipientName = name;
         this.price = price;
     }
 
     public RecipientAndPrice() { }
 
     public String getName() {
-        return name;
+        return recipientName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.recipientName = name;
     }
 
     public BigDecimal getPrice() {

@@ -2,6 +2,7 @@ package com.jdnd.data.persistence.m4e1dsp.repository;
 
 import com.jdnd.data.persistence.m4e1dsp.dto.RecipientAndPrice;
 import com.jdnd.data.persistence.m4e1dsp.entities.Delivery;
+import com.jdnd.data.persistence.m4e1dsp.entities.Plant;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
@@ -47,18 +48,15 @@ public class DeliveryRepository {
         return query.getResultList();
     }
 
-    public RecipientAndPrice findRecipientInfo(Long id) {
+    public RecipientAndPrice findRecipientInfo(Long deliveryId) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
-        CriteriaQuery<Delivery> criteria = cb.createQuery(Delivery.class);
+        CriteriaQuery<RecipientAndPrice> criteria = cb.createQuery(RecipientAndPrice.class);
 
-        Root<Delivery> root = criteria.from(Delivery.class);
-        criteria.select(root);
-        criteria.where(cb.equal(root.get("id"), id));
+        Root<Plant> root = criteria.from(Plant.class);
+        criteria.select(cb.construct(RecipientAndPrice.class, root.get("delivery").get("name"), cb.sum(root.get("price"))));
+        criteria.where(cb.equal(root.get("delivery").get("id"), deliveryId));
 
-        List<Delivery> deliveries = entityManager.createQuery(criteria).getResultList();
-        RecipientAndPrice rap = new RecipientAndPrice();
-        BeanUtils.copyProperties(deliveries, rap);
-        return rap;
+        return entityManager.createQuery(criteria).getSingleResult();
     }
 }

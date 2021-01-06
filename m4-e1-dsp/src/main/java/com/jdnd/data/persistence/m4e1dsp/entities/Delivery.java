@@ -1,5 +1,6 @@
 package com.jdnd.data.persistence.m4e1dsp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 
@@ -9,11 +10,11 @@ import java.util.List;
 
 
 
-@Entity
 @NamedQuery(
         name = "Delivery.ByName",
         query = "select d from Delivery d where d.name = :name"
 )
+@Entity
 public class Delivery {
     @Id
     @GeneratedValue
@@ -30,7 +31,7 @@ public class Delivery {
     @Type(type = "yes_no")
     private boolean delivered;
 
-    @OneToMany(mappedBy = "delivery", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.ALL)
     private List<Plant> plants;
 
     public List<Plant> getPlants() {
