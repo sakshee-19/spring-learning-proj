@@ -7,7 +7,13 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+
 @Entity
+@NamedQuery(
+        name = "Delivery.ByName",
+        query = "select d from Delivery d where d.name = :name"
+)
 public class Delivery {
     @Id
     @GeneratedValue
