@@ -6,6 +6,10 @@ import com.jdnd.data.persistence.m4e1dsp.repository.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PlantService {
 
@@ -29,5 +33,14 @@ public class PlantService {
         if(plantRepository.findById(plantId).isPresent())
             return plantRepository.hasDeliveredByPlantId(plantId);
         return null;
+    }
+
+    public List<Plant> findCheaperPlant(BigDecimal price) {
+        List<Plant> plants = plantRepository.findAllByPriceLessThanEqual(price);
+        if(plants == null){
+            return new ArrayList<>();
+        } else {
+            return plants;
+        }
     }
 }
