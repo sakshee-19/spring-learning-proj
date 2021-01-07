@@ -24,14 +24,21 @@ public class PlantService {
     }
 
     public DeliveredView hasDelivered(Long plantId) {
-        if(plantRepository.findById(plantId).isPresent())
+        if(plantRepository.findById(plantId).isPresent()) {
             return plantRepository.getDeliveryDeliveredById(plantId);
+        }
         return null;
     }
 
     public Boolean hasDelivered2(Long plantId) {
         if(plantRepository.findById(plantId).isPresent())
             return plantRepository.hasDeliveredByPlantId(plantId);
+        return null;
+    }
+
+    public Boolean hasDelivered3(Long plantId) {
+        if(plantRepository.findById(plantId).isPresent())
+            return plantRepository.deliveryCompletedBoolean(plantId);
         return null;
     }
 
@@ -42,5 +49,15 @@ public class PlantService {
         } else {
             return plants;
         }
+    }
+
+    public Long savePlant(Plant plant){
+        Plant savedEntity = plantRepository.save(plant);
+        return savedEntity.getId();
+    }
+
+    public Plant updatePlant(Plant plant, Long id){
+        plant.setId(id);
+        return plantRepository.save(plant);
     }
 }
