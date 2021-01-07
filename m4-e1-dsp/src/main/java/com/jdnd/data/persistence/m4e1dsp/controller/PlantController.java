@@ -46,6 +46,11 @@ public class PlantController {
 
     }
 
+    @GetMapping("/{id}/delivered2")
+    public ResponseEntity hasDelivered2(@PathVariable Long id) {
+        return new ResponseEntity(plantService.hasDelivered2(id), HttpStatus.OK);
+    }
+
     private PlantDTO convertToDto(Plant plant) {
         PlantDTO plantDTO = new PlantDTO();
         BeanUtils.copyProperties(plant, plantDTO);

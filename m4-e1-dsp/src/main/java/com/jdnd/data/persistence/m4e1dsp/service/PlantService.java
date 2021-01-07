@@ -24,4 +24,10 @@ public class PlantService {
             return plantRepository.getDeliveryDeliveredById(plantId);
         return null;
     }
+
+    public Boolean hasDelivered2(Long plantId) {
+        if(plantRepository.findById(plantId).isPresent())
+            return plantRepository.hasDeliveredByPlantId(plantId);
+        return null;
+    }
 }
