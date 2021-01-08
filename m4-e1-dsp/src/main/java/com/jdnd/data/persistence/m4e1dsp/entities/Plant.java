@@ -59,4 +59,14 @@ public class Plant {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Plant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", delivery=" + delivery +
+                '}';
+    }
 }
