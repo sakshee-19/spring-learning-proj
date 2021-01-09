@@ -33,7 +33,8 @@ public class CandyDaoImpl implements CandyDao {
 
     @Override
     public List<CandyData> getCandyList() {
-        return jdbcTemplate.query(CANDY_LIST, new MapSqlParameterSource(), new BeanPropertyRowMapper<>(CandyData.class));
+        return jdbcTemplate.query(CANDY_LIST,
+                candyDataBeanPropertyRowMapper);
     }
 
     @Override
@@ -43,8 +44,18 @@ public class CandyDaoImpl implements CandyDao {
         simpleJdbcInsert.execute(new BeanPropertySqlParameterSource(new Candy_Delivery(candyId, deliveryId)));
     }
 
+    private final String INSERT_DELIVERY_CANDY = "insert into candy_delivery_map (candy_id, delivery_id) Values (:candy_id, :delivery_id)";
+
+    public void mapCandyToDelivery2(Long candyId, Long deliveryId) {
+        jdbcTemplate.update(INSERT_DELIVERY_CANDY, new MapSqlParameterSource()
+                .addValue("candy_id", candyId)
+                .addValue("delivery_id",deliveryId));
+    }
+
     @Override
     public List<CandyData> getListCandyByDelivery(Long deliveryId) {
-        return jdbcTemplate.query(DELIVERY_CANDY_LIST, new MapSqlParameterSource().addValue("id", deliveryId), new BeanPropertyRowMapper<>(CandyData.class));
+        return jdbcTemplate.query(DELIVERY_CANDY_LIST,
+                new MapSqlParameterSource().addValue("id", deliveryId),
+                candyDataBeanPropertyRowMapper);
     }
 }
