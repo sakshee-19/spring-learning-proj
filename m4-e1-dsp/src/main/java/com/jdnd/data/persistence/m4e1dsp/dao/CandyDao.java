@@ -7,5 +7,5 @@ import java.util.List;
 public interface CandyDao {
     List<CandyData> getCandyList();
     void mapCandyToDelivery(Long candyId, Long deliveryId);
-    List<CandyDao> getListCandyByDelivery(Long deliveryId);
+    List<CandyData> getListCandyByDelivery(Long deliveryId);
 }
