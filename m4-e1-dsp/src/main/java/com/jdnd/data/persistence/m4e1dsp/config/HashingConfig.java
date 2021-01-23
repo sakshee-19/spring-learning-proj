@@ -22,9 +22,9 @@ public class HashingConfig {
         String genPass=null;
         try{
             byte[] salt = createSalt();
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(salt);
+//            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            MessageDigest md = MessageDigest.getInstance("MD5");
+//            md.update(salt);
 
             byte[] bytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
